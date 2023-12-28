@@ -1,0 +1,1 @@
+print('CharacterScripts is working!')
