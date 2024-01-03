@@ -4,14 +4,14 @@ local M = {}
 local statusBar = require(script.status_bar)
 
 -- local variables
-local uiName = "UserInterface"
+local uiName = 'UserInterface'
 
 M.new = function(player: Player)
 	local playerGui = player.PlayerGui
 	local character = player.Character or player.CharacterAdded:Wait()
 	local humanoid = character.Humanoid
 
-	local ui = Instance.new("ScreenGui")
+	local ui = Instance.new('ScreenGui')
 	ui.Name = uiName
 
 	statusBar.new({

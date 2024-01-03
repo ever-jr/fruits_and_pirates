@@ -1,8 +1,9 @@
-local rs = game:GetService("ReplicatedStorage")
-local starterGui = game:GetService("StarterGui")
+local rs = game:GetService('ReplicatedStorage')
+local starterGui = game:GetService('StarterGui')
 local userInterface = require(rs.user_interface)
 
-local player = game:GetService("Players").LocalPlayer
+-- player related
+local player = game:GetService('Players').LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character.Humanoid
 
