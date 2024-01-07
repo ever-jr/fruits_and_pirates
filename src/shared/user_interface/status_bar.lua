@@ -6,8 +6,6 @@ local bgName = 'StatusBar'
 --- Healthbar name
 local hbName = 'HealthBar'
 
-local setBackgroundBorder = function(frame: Frame) end
-
 M.new = function(a: { humanoid: Humanoid, parent: Instance, onHealthChanged: RBXScriptSignal })
 	local background = Instance.new('Frame')
 	background.Name = bgName
