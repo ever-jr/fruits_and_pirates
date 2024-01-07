@@ -4,7 +4,6 @@ local userInterface = require(rs.user_interface)
 
 -- player related
 local player = game:GetService('Players').LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
 
 -- disable core health gui
 starterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
