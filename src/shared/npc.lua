@@ -1,7 +1,7 @@
 --!strict
 local npc = {}
 local rs = game:GetService('ReplicatedStorage')
-local hp = require(rs.humanoid_parts_names)
+local body = require(rs.body_parts)
 
 
 npc.new = function(parent: Instance)
@@ -19,28 +19,28 @@ npc.new = function(parent: Instance)
 
     -- Head
     nPart({
-        name = hp.head,
+        name = body.head,
         size = Vector3.one,
     })
 
     -- UpperTorso
     local upperTorsoHeight = 1.6
     nPart({
-        name = hp.upperTorso,
+        name = body.upperTorso,
         size = Vector3.new(1.5, upperTorsoHeight, 1),
     })
 
     -- LowerTorso
     local lowerTorsoHeight = .4
     nPart({
-        name = hp.lowerTorso,
+        name = body.lowerTorso,
         size = Vector3.new(1.5, lowerTorsoHeight, 1),
     })
 
     -- HumanoidRootPart
     local rootHeight = upperTorsoHeight + lowerTorsoHeight
     nPart({
-        name = hp.root,
+        name = body.root,
         size = Vector3.new(1.5, rootHeight, 1),
     })
 
@@ -51,15 +51,15 @@ npc.new = function(parent: Instance)
         })
     end
     
-    createArmOrLeg(hp.rightUpperArm)
-    createArmOrLeg(hp.rightLowerArm)
-    createArmOrLeg(hp.rightUpperLeg)
-    createArmOrLeg(hp.rightLowerLeg)
+    createArmOrLeg(body.rightUpperArm)
+    createArmOrLeg(body.rightLowerArm)
+    createArmOrLeg(body.rightUpperLeg)
+    createArmOrLeg(body.rightLowerLeg)
 
-    createArmOrLeg(hp.leftUpperArm)
-    createArmOrLeg(hp.leftLowerArm)
-    createArmOrLeg(hp.leftUpperLeg)
-    createArmOrLeg(hp.leftLowerLeg)
+    createArmOrLeg(body.leftUpperArm)
+    createArmOrLeg(body.leftLowerArm)
+    createArmOrLeg(body.leftUpperLeg)
+    createArmOrLeg(body.leftLowerLeg)
 
     local createHandOrFoot = function(name: string)
         nPart({
@@ -68,11 +68,11 @@ npc.new = function(parent: Instance)
         })
     end
 
-    createHandOrFoot(hp.rightHand)
-    createHandOrFoot(hp.rightHand)
+    createHandOrFoot(body.rightHand)
+    createHandOrFoot(body.rightHand)
 
-    createHandOrFoot(hp.leftFoot)
-    createHandOrFoot(hp.leftFoot)
+    createHandOrFoot(body.leftFoot)
+    createHandOrFoot(body.leftFoot)
 
     model.Parent = parent
 end
