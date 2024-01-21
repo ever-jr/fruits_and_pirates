@@ -1,8 +1,8 @@
-local rs = game:GetService('ReplicatedStorage')
+local rs = game:GetService('ReplicatedStorage').events
 
 -- events
 local inputEvent = game:GetService('UserInputService')
-local onPlayerHit = rs.events.on_player_hit
+local onPlayerHit = rs.events.player_hit
 
 inputEvent.InputBegan:Connect(function(input)
 	if input.KeyCode == Enum.KeyCode.T then
