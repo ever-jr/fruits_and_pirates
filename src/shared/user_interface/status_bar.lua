@@ -1,3 +1,4 @@
+--!strict
 local M = {}
 
 --- Background name
@@ -6,7 +7,7 @@ local bgName = 'StatusBar'
 --- Healthbar name
 local hbName = 'HealthBar'
 
-M.new = function(a: { humanoid: Humanoid, parent: Instance, onHealthChanged: RBXScriptSignal })
+M.new = function(a: { humanoid: Humanoid, parent: Instance })
 	local background = Instance.new('Frame')
 	background.Name = bgName
 	background.Size = UDim2.new(0.3, 0, 0, 50)
@@ -23,7 +24,8 @@ M.new = function(a: { humanoid: Humanoid, parent: Instance, onHealthChanged: RBX
 	healthBar.BackgroundColor3 = Color3.fromHex('#a20050')
 
 	-- when player get hit
-	a.onHealthChanged:Connect(function(health)
+	local onHealthChanged = a.humanoid.HealthChanged
+	onHealthChanged:Connect(function(health)
 		local maxHealth = a.humanoid.MaxHealth
 
 		healthBar.Size = UDim2.fromScale(health / maxHealth, 1)

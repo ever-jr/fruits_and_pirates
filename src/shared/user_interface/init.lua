@@ -6,21 +6,16 @@ local statusBar = require(script.status_bar)
 -- local variables
 local uiName = 'UserInterface'
 
-M.new = function(player: Player)
-	local playerGui = player.PlayerGui
-	local character = player.Character or player.CharacterAdded:Wait()
-	local humanoid = character.Humanoid
-
+M.new = function(a: { humanoid: Humanoid, playerGui: PlayerGui})
 	local ui = Instance.new('ScreenGui')
 	ui.Name = uiName
 
 	statusBar.new({
-		humanoid = humanoid,
+		humanoid = a.humanoid,
 		parent = ui,
-		onHealthChanged = humanoid.HealthChanged,
 	})
 
-	ui.Parent = playerGui
+	ui.Parent = a.playerGui
 end
 
 M.load = function(playerGui: PlayerGui): ScreenGui
