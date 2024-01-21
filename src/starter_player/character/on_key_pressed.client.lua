@@ -1,7 +1,7 @@
 local rs = game:GetService('ReplicatedStorage')
-local input_event = game:GetService('UserInputService')
+local inputEvent = game:GetService('UserInputService')
 
-local key_pressed_event = require(rs.key_pressed_event)
+local event = require(rs.key_pressed_event)
 
 inputEvent.InputBegan:Connect(function(input, _)
     local keys = { 'Q', 'E', 'R', 'F' }
@@ -17,6 +17,6 @@ inputEvent.InputBegan:Connect(function(input, _)
 
     local key = valid_key()
     if key then
-        key_pressed_event:FireServer(key)
+        event:FireServer(key)
     end
 end)
