@@ -7,7 +7,7 @@ local bgName = 'StatusBar'
 --- Healthbar name
 local hbName = 'HealthBar'
 
-M.new = function(a: { humanoid: Humanoid, parent: Instance })
+M.new = function(humanoid: Humanoid): Frame
 	local background = Instance.new('Frame')
 	background.Name = bgName
 	background.Size = UDim2.new(0.3, 0, 0, 50)
@@ -24,15 +24,14 @@ M.new = function(a: { humanoid: Humanoid, parent: Instance })
 	healthBar.BackgroundColor3 = Color3.fromHex('#a20050')
 
 	-- when player get hit
-	local onHealthChanged = a.humanoid.HealthChanged
+	local onHealthChanged = humanoid.HealthChanged
 	onHealthChanged:Connect(function(health)
-		local maxHealth = a.humanoid.MaxHealth
+		local maxHealth = humanoid.MaxHealth
 
 		healthBar.Size = UDim2.fromScale(health / maxHealth, 1)
 	end)
 
-	-- put in ScreenGui
-	background.Parent = a.parent
+	return background
 end
 
 M.changeHealth = function()

@@ -1,3 +1,5 @@
-local event = game:GetService("ReplicatedStorage").events.on_key_pressed
+local onKeyPressed = game:GetService("ReplicatedStorage").events.on_key_pressed
+local event = onKeyPressed.event
+local handler = require(onKeyPressed.handler)
 
-event.OnServerEvent:Connect()
+event.OnServerEvent:Connect(handler.onServer)

@@ -1,7 +1,7 @@
 local rs = game:GetService('ReplicatedStorage')
 local inputEvent = game:GetService('UserInputService')
 
-local event = rs.events.on_key_pressed
+local event = rs.events.on_key_pressed.event
 
 inputEvent.InputBegan:Connect(function(input, _)
     local keys = { 'Q', 'E', 'R', 'F' }
