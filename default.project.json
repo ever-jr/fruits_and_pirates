@@ -2,6 +2,7 @@
   "name": "fruits_and_pirates",
   "tree": {
     "$className": "DataModel",
+    "$ignoreUnknownInstances": true,
 
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
@@ -18,7 +19,6 @@
     "StarterPlayer": {
       "$className": "StarterPlayer",
       "$ignoreUnknownInstances": true,
-      "$path": "src/starter_player/",
 
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
