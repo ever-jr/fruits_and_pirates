@@ -1,22 +1,19 @@
---!strict
 local M = {}
 
--- local variables
-local uiName = 'UserInterface'
+type build_interface = {
+    name: string,
+    player_gui: PlayerGui,
+}
 
-M.new = function(a: { playerGui: PlayerGui, interfaceBuilder: () -> Frame })
+M.new = function(interface: build_interface, ...: Frame)
 	local ui = Instance.new('ScreenGui')
-	ui.Name = uiName
+	ui.Name = interface.name
 
-	local interface = a.interfaceBuilder()
-	interface.Parent = ui
+    for _, f in pairs({...}) do
+        f.Parent = ui
+    end
 
-	ui.Parent = a.playerGui
-end
-
-M.load = function(playerGui: PlayerGui): ScreenGui
-	local ui = playerGui:FindFirstChild(uiName) :: ScreenGui
-	return ui
+	ui.Parent = interface.player_gui
 end
 
 return M
