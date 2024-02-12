@@ -1,5 +1,4 @@
 local rs = game:GetService('ReplicatedStorage')
-local starterGui = game:GetService('StarterGui')
 local inputEvent = game:GetService('UserInputService')
 local userInterface = require(rs.user_interface)
 local events = rs.events
@@ -10,22 +9,8 @@ local onSaveEvent = rs.events.on_save
 
 -- player related
 local player = game:GetService('Players').LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:WaitForChild('Humanoid') :: Humanoid
 
 local playerGui = player.PlayerGui
-
--- disable core health gui
-starterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
-
-local statusBar = require(interfaces.status_bar)
-userInterface.new(
-    {
-        name = "StatusBarGui",
-        player_gui = playerGui,
-    },
-    statusBar.new(humanoid)
-)
 
 local save = require(interfaces.save)
 userInterface.new(
