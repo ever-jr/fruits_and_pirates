@@ -17,3 +17,7 @@ A Roblox game with pirates theme.
 ## Map
 - [ ] each island have stages one above another
 - [ ] create the ui
+
+## Player
+- [ ] need more dexterity to use 2 swords
+- [ ] use 2 quick item spaces to use double sword
