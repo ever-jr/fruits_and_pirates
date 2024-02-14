@@ -1,8 +1,9 @@
-local rs = game:GetService('ReplicatedStorage')
-local starterGui = game:GetService('StarterGui')
-local userInterface = require(rs.user_interface)
+local RS = game:GetService('ReplicatedStorage')
+local STARTER_GUI = game:GetService('StarterGui')
 
-local interfaces = rs.user_interface.interfaces
+local Inventory = require(RS.inventory)
+local UserInterface = require(RS.user_interface)
+local interfaces = RS.user_interface.interfaces
 
 -- player related
 local player = game:GetService('Players').LocalPlayer
@@ -12,11 +13,17 @@ local humanoid = character:WaitForChild('Humanoid') :: Humanoid
 local playerGui = player.PlayerGui
 
 -- disable core health gui
-starterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
-starterGui = nil
+STARTER_GUI:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false)
+STARTER_GUI = nil
+
+Inventory.initGui(
+    playerGui,
+    player.Name,
+    player:GetAttribute("Level") or 1
+)
 
 local statusBar = require(interfaces.status_bar)
-userInterface.new(
+UserInterface.new(
     {
         name = "StatusBarGui",
         player_gui = playerGui,
