@@ -11,7 +11,3 @@ players.PlayerAdded:Connect(function(player)
     })
     weapon.Parent = character
 end)
-
-players.PlayerRemoving:Connect(function(player)
-    pam.savePlayerAttributes(player)
-end)
