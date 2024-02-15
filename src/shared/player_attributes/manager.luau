@@ -4,7 +4,7 @@ local player_attributes = game:GetService("ReplicatedStorage").player_attributes
 --- Data Store
 local ds = require(player_attributes.data_store)
 --- Type
-local t = require(player_attributes.type)
+local T = require(player_attributes.type)
 
 --- Player Attributes Manager
 local pam = {}
@@ -22,12 +22,14 @@ end
 pam.savePlayerAttributes = function(player: Player)
     print("saving player data:", player.Name)
     local userId = string.format("%d", player.UserId)
-    local attributes: t.PlayerAttributes = {
-        fruit = player:GetAttribute("fruit"),
-        strength = player:GetAttribute("strength"),
-        constitution = player:GetAttribute("constitution"),
-        dexterity = player:GetAttribute("dexterity"),
-        mind = player:GetAttribute("mind"),
+    local attNm = T.attributeNames
+    local attributes: T.PlayerAttributes = {
+        level = player:GetAttribute(attNm.level),
+        fruit = player:GetAttribute(attNm.fruit),
+        strength = player:GetAttribute(attNm.strength),
+        constitution = player:GetAttribute(attNm.fruit),
+        dexterity = player:GetAttribute(attNm.dexterity),
+        mind = player:GetAttribute(attNm.mind),
     }
     print("player's attributes:", attributes)
     local errorMessage = ds.save(userId, attributes)

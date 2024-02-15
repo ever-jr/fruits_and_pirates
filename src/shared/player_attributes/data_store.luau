@@ -1,16 +1,16 @@
 --!strict
 
-local rs = game:GetService("ReplicatedStorage")
-local ds = require(rs.data_store)
-local t = require(rs.player_attributes.type)
+local RS = game:GetService("ReplicatedStorage")
+local ds = require(RS.data_store)
+local T = require(RS.player_attributes.type)
 
 local vault = ds.getDataStore("Attributes")
 
 local dataStore = {}
 
-dataStore.load = function(userId: string): t.PlayerAttributes
+dataStore.load = function(userId: string): T.PlayerAttributes
     -- Try to get user saved data
-    local success, data = pcall(function(): t.PlayerAttributes?
+    local success, data = pcall(function(): T.PlayerAttributes?
         local data = vault:GetAsync(userId)
         return data
     end)
@@ -22,6 +22,7 @@ dataStore.load = function(userId: string): t.PlayerAttributes
     else
         warn("no data found")
         return {
+            level = 1,
             fruit = "",
             strength = 0,
             dexterity = 0,
@@ -31,7 +32,7 @@ dataStore.load = function(userId: string): t.PlayerAttributes
     end
 end
 
-dataStore.save = function(userId: string, data: t.PlayerAttributes): string?
+dataStore.save = function(userId: string, data: T.PlayerAttributes): string?
     warn("saving...")
     local success, errorMessage = pcall(function()
         vault:SetAsync(userId, data)

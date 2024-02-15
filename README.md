@@ -12,6 +12,7 @@ A Roblox game with pirates theme.
 ## Inventory
 - [x] create the ui
 - [x] toggle inventory
+- [ ] update attributes
 - [ ] replace values
 - [ ] show actual items
 - [ ] move the items to it squares
