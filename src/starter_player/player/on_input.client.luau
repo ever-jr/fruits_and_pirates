@@ -1,24 +1,38 @@
 local UIS = game:GetService("UserInputService")
 local RS = game:GetService("ReplicatedStorage")
-local player = game:GetService("Players").LocalPlayer
-local player_gui = player.PlayerGui
+local PLAYER = game:GetService("Players").LocalPlayer
+local MOUSE = PLAYER:GetMouse()
 
+-- Modules
 local Util = require(RS.util)
 local Keys = require(RS.keys)
-local Inventory = require(RS.inventory)
+local InventoryGui = require(RS.inventory.gui)
 
-local event = RS.events.on_key_pressed
+-- Events
+local events = RS.events
+local KeyPressed = events.on_key_pressed
+local OnAttack = events.on_attack
+
+local player_gui = PLAYER.PlayerGui
 local listed_keys = Util.map_to_list(Keys)
 
-UIS.InputBegan:Connect(function(input: InputObject, _: boolean)
+-- HANDLERS
+local handle_input = function(input: InputObject)
     local key = input.KeyCode.Name
     local input_exist = table.find(listed_keys, key)
-    print(input.KeyCode)
     if input_exist == nil then return end
 
     if key == Keys.toggle_inventory then
-        Inventory.toggle_gui(player_gui)
+        InventoryGui.toggle(player_gui)
     else
-        event:FireServer(key)
+        KeyPressed:FireServer(key)
     end
-end)
+end
+
+local handle_mouse = function()
+    OnAttack:FireServer()
+end
+
+-- EVENTS
+UIS.InputBegan:Connect(handle_input)
+MOUSE.Button1Down:Connect(handle_mouse)

@@ -24,3 +24,7 @@ A Roblox game with pirates theme.
 ## Player
 - [ ] need more dexterity to use 2 swords
 - [ ] use 2 quick item spaces to use double sword
+
+## Weapons
+- [x] adding script to weapon
+- [ ] fix: adding script to everything, filter for tool
